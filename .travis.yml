@@ -8,7 +8,7 @@ script:
 # prepare qemu
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset
 # build image
-  - docker build --build-arg subliminal_version=$subliminal_version -t dtroncy/rpi-subliminal .
+  - docker build --no-cache --build-arg subliminal_version=$subliminal_version -t dtroncy/rpi-subliminal .
 # push image
   - >
     if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
