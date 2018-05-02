@@ -1,10 +1,10 @@
-FROM hypriot/rpi-alpine-scratch
+FROM hypriot/rpi-alpine
 
 ARG subliminal_version
 
-#RUN apk update
+RUN apk update
     
-#RUN apk upgrade
+RUN apk upgrade
 
 RUN apk add bash
 
