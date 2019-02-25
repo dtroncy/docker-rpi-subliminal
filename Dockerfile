@@ -1,4 +1,4 @@
-FROM hypriot/rpi-alpine
+FROM dtroncy/rpi-alpine:3.8
 
 ARG subliminal_version
 
@@ -6,9 +6,9 @@ RUN apk update \
     && apk upgrade \
     && apk add bash \
     && apk add python3 \
-    && apk add py-pip \
-    && pip install --upgrade pip \
-    && pip install pytest-runner \
+    && pip3 install --upgrade pip \
+    && pip3 install pytest-runner \
+    && apk add unrar \
     && rm -rf /var/cache/apk/* \
     && mkdir -p /usr/src/app /usr/src/cache
 
@@ -18,7 +18,7 @@ VOLUME /usr/src/cache
 
 COPY . /usr/src/app
 
-RUN pip install --no-cache-dir subliminal==$subliminal_version
+RUN pip3 install --no-cache-dir subliminal==$subliminal_version
 
 ENTRYPOINT ["subliminal", "--cache-dir", "/usr/src/cache"]
 
