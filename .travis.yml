@@ -1,7 +1,7 @@
 sudo: required
 language: bash
 env:
-  - subliminal_version=2.0.5
+  - subliminal_version=2.1.0
 # install last docker version
 before_install:
   - sudo apt-get remove docker docker-engine docker.io containerd runc
@@ -22,12 +22,12 @@ script:
   - >
     if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
       docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-      docker buildx build --platform linux/amd64,linux/arm/v6 --build-arg subliminal_version=$subliminal_version -t dtroncy/rpi-subliminal:latest --push .
-      docker buildx build --platform linux/amd64,linux/arm/v6 --build-arg subliminal_version=$subliminal_version -t dtroncy/rpi-subliminal:$subliminal_version --push .
+      docker buildx build --platform linux/amd64,linux/arm/v7 --build-arg subliminal_version=$subliminal_version -t dtroncy/rpi-subliminal:latest --push .
+      docker buildx build --platform linux/amd64,linux/arm/v7 --build-arg subliminal_version=$subliminal_version -t dtroncy/rpi-subliminal:$subliminal_version --push .
     fi
 # if develop branch, build image and load it
   - >
     if [ "$TRAVIS_BRANCH" == "develop" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-      docker buildx build --platform linux/amd64,linux/arm/v6 --build-arg subliminal_version=$subliminal_version -t dtroncy/rpi-subliminal:latest --load .
-      docker buildx build --platform linux/amd64,linux/arm/v6 --build-arg subliminal_version=$subliminal_version -t dtroncy/rpi-subliminal:$subliminal_version --load .
+      docker buildx build --platform linux/amd64,linux/arm/v7 --build-arg subliminal_version=$subliminal_version -t dtroncy/rpi-subliminal:latest .
+      docker buildx build --platform linux/amd64,linux/arm/v7 --build-arg subliminal_version=$subliminal_version -t dtroncy/rpi-subliminal:$subliminal_version .
     fi
