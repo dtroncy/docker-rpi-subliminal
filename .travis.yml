@@ -3,7 +3,7 @@ services:
   - docker
 language: bash
 env:
-  - subliminal_version=2.0.5
+  - subliminal_version=2.1.0
 script:
 # prepare qemu
   - docker run --rm --privileged multiarch/qemu-user-static:register --reset

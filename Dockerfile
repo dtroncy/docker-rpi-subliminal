@@ -1,4 +1,4 @@
-FROM dtroncy/rpi-alpine:3.8
+FROM dtroncy/rpi-alpine:3.11.6
 
 ARG subliminal_version
 
