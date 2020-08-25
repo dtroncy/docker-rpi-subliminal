@@ -6,6 +6,7 @@ RUN apk update \
     && apk upgrade \
     && apk add bash \
     && apk add python3 \
+    && apk add pip3 \
     && pip3 install --upgrade pip \
     && pip3 install pytest-runner \
     && apk add unrar \
